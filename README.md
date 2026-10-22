@@ -15,7 +15,7 @@ search), [jdb](https://github.com/Jainam004747/jdb) (SQL) and [jredis](https://g
 
 | What | Before | After |
 |---|---|---|
-| MLP on the two-spirals dataset | 50% (chance) | **99.3%** accuracy |
+| MLP on a 3-class spiral dataset | 33% (chance) | **99.3%** accuracy |
 | Q-learning in a grid world | 19% reach goal (random) | **100%** (shortest safe path) |
 | Agent tool router, held-out tasks | 25% correct | **100%** after 400 graded tasks |
 | Bandits, regret after 5000 pulls | ε-greedy 146 | **UCB1 63** |
@@ -74,5 +74,5 @@ for why, and [docs/DEV-LOG.md](docs/DEV-LOG.md) for the commands used to build a
 
 The offline policy is **not** a language model: it is a transparent scripted policy whose only learned
 part is the tool router. It exists so the agent loop, safety checks and learning-from-rewards can be
-tested deterministically without an API key. The transformer is tiny and trains on ~40 KB of text on a
+tested deterministically without an API key. The transformer is tiny and trains on ~13 KB of text on a
 CPU, so it learns spelling-level patterns, not knowledge. Built with AI assistance as a learning project.

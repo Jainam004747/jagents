@@ -6,7 +6,7 @@
 | `pip install -e ".[dev]"` | Editable install: code changes apply without reinstalling; `[dev]` adds pytest |
 | `pytest -q` | Runs all tests; `-q` prints one dot per test |
 | `python examples/autograd_demo.py` | Watch gradients computed by hand-written backprop |
-| `python examples/train_mlp.py` | Two-spirals classification, 99.3% accuracy |
+| `python examples/train_mlp.py` | 3-class spiral classification, 99.3% accuracy |
 | `python examples/train_char_transformer.py 300` | Train the tiny transformer for 300 steps and sample text |
 | `python examples/learn_tool_routing.py` | Router learns from rewards (25% → 100%), saves `data/router.json` |
 | `python examples/gridworld.py` | Q-learning: prints the learned policy as arrows |
