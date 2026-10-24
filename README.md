@@ -1,4 +1,6 @@
-# jagents — AI agents and learning algorithms from first principles
+# jagents
+
+AI agents and the learning algorithms behind them, built from scratch.
 
 [![ci](https://github.com/Jainam004747/jagents/actions/workflows/ci.yml/badge.svg)](https://github.com/Jainam004747/jagents/actions/workflows/ci.yml)
 
@@ -47,6 +49,62 @@ Connect the other projects instead of the fallbacks:
 export JSEARCH_URL=http://localhost:8080   # jsearch web server
 export JDB_BIN=../jdb/jdb                  # jdb binary
 export JREDIS_PORT=6380                    # jredis server
+```
+
+## Output
+
+The agent picking a tool and answering:
+
+```text
+$ python -m jagents ask --offline -v "How many calories are in a croissant?"
+(offline policy with learned router)
+  -> sql({'query': "SELECT calories FROM menu WHERE name = 'croissant'"})
+     'calories\n300'
+300
+
+$ python -m jagents ask --offline -v "What is (12 + 8) * 3?"
+(offline policy with learned router)
+  -> calculator({'expression': '(12 + 8) * 3'})
+     '60'
+60
+
+$ python -m jagents eval --offline
+success 100%  by family {'menu': 1.0, 'math': 1.0, 'fact': 1.0}  avg tool calls 1.00  tool errors 0
+```
+
+The router learning from rewards:
+
+```text
+$ python examples/learn_tool_routing.py
+held-out success before training: 25%
+success per block of 50 training tasks (with 10% exploration): ['58%', '86%', '94%', '96%', '92%', '88%', '90%', '100%']
+held-out success after training:  100%  {'menu': 1.0, 'fact': 1.0, 'math': 1.0}
+```
+
+Q-learning in a grid world (S start, G goal, X pit, # wall). The arrows are the learned policy:
+
+```text
+$ python examples/gridworld.py
+random policy reaches the goal: 19%
+average return, first 50 episodes: -0.28  last 50: +0.93
+learned policy reaches the goal: 100%
+↓→↓←#
+↓#↓←←
+↓#↓X↓
+→↓↓#↓
+#→→→G
+```
+
+Bandits and the small neural network:
+
+```text
+$ python examples/bandits.py
+epsilon-greedy (0.1)   regret after 100:    7.9   1000:   31.5   5000:  146.5
+UCB1                   regret after 100:   11.9   1000:   50.2   5000:   63.4
+
+$ python examples/train_mlp.py
+...
+final accuracy 99.33% with 4547 parameters
 ```
 
 ## What is inside

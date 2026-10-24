@@ -1,4 +1,4 @@
-# Dev log — commands used and why
+# Dev log: commands I used and why
 
 | Command | Why |
 |---|---|
