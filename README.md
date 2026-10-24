@@ -75,4 +75,4 @@ for why, and [docs/DEV-LOG.md](docs/DEV-LOG.md) for the commands used to build a
 The offline policy is **not** a language model: it is a transparent scripted policy whose only learned
 part is the tool router. It exists so the agent loop, safety checks and learning-from-rewards can be
 tested deterministically without an API key. The transformer is tiny and trains on ~13 KB of text on a
-CPU, so it learns spelling-level patterns, not knowledge. Built with AI assistance as a learning project.
+CPU, so it learns spelling-level patterns, not knowledge.
